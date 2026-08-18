@@ -1,0 +1,38 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: 210 20% 98%;
+  --foreground: 222 47% 11%;
+  --card: 0 0% 100%;
+  --border: 214 23% 91%;
+  --muted: 210 25% 96%;
+  --muted-foreground: 215 16% 47%;
+  --primary: 166 82% 30%;
+  --primary-foreground: 0 0% 100%;
+  --destructive: 0 72% 51%;
+}
+
+* { box-sizing: border-box; border-color: hsl(var(--border)); }
+html { min-width: 320px; background: hsl(var(--background)); }
+body { min-width: 320px; min-height: 100vh; margin: 0; background: #f8fafb; color: hsl(var(--foreground)); }
+button, input, select, textarea { font: inherit; }
+button, a { -webkit-tap-highlight-color: transparent; }
+::selection { background: #bbf7d0; color: #052e20; }
+
+@layer components {
+  .surface { @apply rounded-xl border border-border bg-white shadow-soft; }
+  .page-title { @apply text-[26px] font-semibold tracking-[-0.035em] text-slate-950 sm:text-[30px]; }
+  .section-title { @apply text-base font-semibold tracking-[-0.015em] text-slate-950; }
+  .label { @apply text-[11px] font-semibold uppercase tracking-[0.09em] text-slate-500; }
+  .data-cell { @apply px-4 py-3.5 text-sm; }
+  .focus-ring { @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500/30; }
+}
+
+@keyframes indeterminate { 0% { transform: translateX(-100%); } 50% { transform: translateX(80%); } 100% { transform: translateX(260%); } }
+.animate-indeterminate { animation: indeterminate 1.4s ease-in-out infinite; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; transition-duration: .01ms !important; }
+}
